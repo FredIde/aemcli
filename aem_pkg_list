@@ -1,0 +1,11 @@
+#!/bin/bash
+
+. $(dirname $0)/aem_common
+
+server=$(resolve_server $1)
+url=$server/etc/packages.tidy.2.json
+
+call $url | perl -ne '
+  if (/^    "([^"]*?)(?:-([0-9\.]+))?\.zip": {/) { print "$group:$1:$2\n"; }
+  if (/^  "([^"]*)"/) { $group = $1 }
+' | sort

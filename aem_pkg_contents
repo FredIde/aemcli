@@ -1,0 +1,23 @@
+#!/bin/bash
+
+. $(dirname $0)/aem_common
+
+usage_params() {
+	echo "server package"
+	echo "server: protocol://hostname of server to send to, may be an alias from ~/.aemcli"
+	echo "package: [package_group:]package_name"
+}
+
+output=
+if [ "$1" == "-o" ]; then
+	output=$2
+	[ "$output" != "-" ] || output=/dev/stdout
+	shift 2
+fi
+
+server=$(resolve_server $1)
+resolve_package $2
+
+call -X POST "$server/crx/packmgr/service/.html/etc/packages/$package_group/$package_name.zip?cmd=contents" \
+| perl -ne '/.*<span class="-">(?:<b>-<\/b>)?&nbsp;([^<]*)<.*/ && print "$1\n"' \
+| grep -v '/$'

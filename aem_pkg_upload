@@ -1,0 +1,21 @@
+#!/bin/bash
+
+. $(dirname $0)/aem_common
+
+usage_params() {
+	echo "[-i] server file"
+	echo "output: file to output to, defaults to package_name, - for stdout"
+	echo "package: [package_group:]package_name"
+}
+
+install=false
+if [ "$1" == "-i" ]; then
+	install=true
+	shift
+fi
+
+server=$(resolve_server $1)
+file=$2
+
+url="$server/crx/packmgr/service/.json/?cmd=upload&force=true"
+call -F "package=@$file;filename=file.zip" -F install=$install $url

@@ -1,0 +1,72 @@
+
+set -e
+
+usage() {
+	if [ "$1" ]; then
+		log_error "$@"
+		echo 1>&2
+	fi
+	
+	echo -n "Usage: $(basename $0) "
+	usage_params
+	exit 1
+}
+
+# resolve the name of a server
+# looks for a shortcut aem_alias_VAR defined in the config file
+resolve_server() {
+	if [ ! $1 ]; then
+		usage "server must be specified"
+	fi
+	
+	lookup=aem_alias_$1
+	full=${!lookup}
+	server=$1
+	[ ! $full ] || server=$full
+	log_debug "server: $server"
+	echo $server
+}
+
+log_debug() {
+	[ ! $DEBUG ] || echo "$@" 1>&2
+}
+
+log_error() {
+	echo "Error:" "$@" 1>&2
+}
+
+resolve_package() {
+	remaining=$1
+	[ $remaining ] || usage "package must be specified"
+	
+	package_version=
+	if [[ $remaining =~ :[0-9\.]+$ ]]; then
+			package_version=${remaining/*:}
+			remaining=${remaining%:$package_version}
+	fi
+	
+	package_group=$aem_default_pkg_group
+	if [[ $remaining =~ : ]]; then
+		package_group=${remaining/:*}
+		remaining=${remaining/*:}
+	fi
+	
+	package_name=$remaining
+	package=$package_group:$package_name:$package_version
+	export package package_group package_name package_version
+	
+	log_debug "package: $package"
+	log_debug "package_group: $package_group"
+	log_debug "package_name: $package_name"
+	log_debug "package_version: $package_version"
+}
+
+call() {
+	curl -nfsS --connect-timeout 1 "$@"
+	echo
+}
+
+if [ -f $HOME/.aemcli ]; then
+	. $HOME/.aemcli
+fi
+

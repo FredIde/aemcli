@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. $(dirname $0)/aem_common
+
+usage_params() {
+	echo "[-o output] server package"
+	echo "output: file to output to, defaults to package_name, - for stdout"
+	echo "package: [package_group:]package_name"
+}
+
+output=
+if [ "$1" == "-o" ]; then
+	output=$2
+	[ "$output" != "-" ] || output=/dev/stdout
+	shift 2
+fi
+
+server=$(resolve_server $1)
+resolve_package $2
+
+[ "$output" ] || output=$package_name.zip
+call $server/etc/packages/$package_group/$package_name.zip > $output
