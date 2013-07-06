@@ -40,4 +40,4 @@ Options
 
 ## References
 
-* (http://dev.day.com/docs/en/cq/current/core/using_crx/content_import_and.html#Managing Packages on the Command Line)
+* [Adobe Experience Manager - Managing Packages on the Command Line](http://dev.day.com/docs/en/cq/current/core/using_crx/content_import_and.html#Managing Packages on the Command Line)
