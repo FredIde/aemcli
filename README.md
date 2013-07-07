@@ -20,6 +20,8 @@ Delete old versions of packages
 Transfer a package from one server to another, optionally building it first
 * `aem_pkg_install server package`  
 Install a package
+* `aem_pkg_build server package`  
+Build a package
 
 ## Options
 
@@ -56,7 +58,6 @@ machine aemautdev01.example.com login admin password admin
 
 Directly using the CRX API
 
-* aem_pkg_build autdev01 [com.example.aem:]url-map
 * aem_pkg_preview autdev01 [com.example.aem:]url-map
 * aem_pkg_uninstall autdev01 [com.example.aem:]url-map
 

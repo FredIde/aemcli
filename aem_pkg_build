@@ -1,0 +1,14 @@
+#!/bin/bash
+
+usage_params() {
+	echo "server package"
+	echo "server: protocol://hostname of server to send to, may be an alias from ~/.aemcli"
+	echo "package: [package_group:]package_name[:version]"
+}
+
+. $(dirname $0)/aem_common
+
+server=$(resolve_server $1)
+resolve_package $2
+
+call -X POST "$server/crx/packmgr/service/.json$package_jcr?cmd=build"
