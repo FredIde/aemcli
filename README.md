@@ -12,6 +12,8 @@ Download a package
 List the contents of a package
 * `aem_pkg_list server`  
 List the packages on a server
+* `aem_pkg_delete server package`  
+Delete a package
 
 ## Options
 
@@ -50,7 +52,6 @@ Directly using the CRX API
 
 * aem_pkg_build autdev01 [com.example.aem:]url-map
 * aem_pkg_preview autdev01 [com.example.aem:]url-map
-* aem_pkg_delete [-u] autdev01 [com.example.aem:]url-map
 * aem_pkg_uninstall autdev01 [com.example.aem:]url-map
 * aem_pkg_install [-d] [-r] autdev01 [com.example.aem:]url-map
 
