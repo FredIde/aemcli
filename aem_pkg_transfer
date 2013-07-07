@@ -1,0 +1,25 @@
+#!/bin/bash
+
+usage_params() {
+	echo "from_server to_server package"
+	echo "package: [package_group:]package_name"
+}
+
+. $(dirname $0)/aem_common
+
+build=false
+if [ "$1" = "-b" ]; then
+	build=true
+	shift
+fi
+
+server_from=$(resolve_server $1)
+server_to=$(resolve_server $2)
+resolve_package $3
+
+if $build; then
+	$(dirname $0)/aem_pkg_build $server_from $package
+fi
+
+$(dirname $0)/aem_pkg_download -o - $server_from $package \
+	| $(dirname $0)/aem_pkg_upload -i $server_to -

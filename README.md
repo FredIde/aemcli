@@ -16,6 +16,8 @@ List the current packages on a server, can also show all versions, or just previ
 Delete a package
 * `aem_pkg_clean server`  
 Delete old versions of packages
+* `aem_pkg_transfer [-b] server_from server_to package`  
+Transfer a package from one server to another, optionally building it first
 
 ## Options
 
@@ -59,7 +61,6 @@ Directly using the CRX API
 
 Extensions
 
-* aem_pkg_transfer [-b] autdev01 autdev02 com.example.aem:url-map
 * aem_pkg_repo_deploy autdev01 [com.example.aem:]url-map[:version]
 * aem_pkg_repo_release [-b] autdev01 com.example.aem:url-map
 
