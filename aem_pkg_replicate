@@ -1,0 +1,14 @@
+#!/bin/bash
+
+. $(dirname $0)/aem_common
+
+usage_params() {
+	echo "server package"
+	echo "package: [package_group:]package_name"
+}
+
+server=$(resolve_server $1)
+resolve_package $2
+
+url="$server/crx/packmgr/service/.json/etc/packages/$package_group/$package_name.zip?cmd=replicate"
+call -X POST $url
