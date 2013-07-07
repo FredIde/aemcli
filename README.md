@@ -2,15 +2,15 @@
 
 ## Tools
 
-* aem_pkg_upload `[-i] server file`  
+* `aem_pkg_upload [-i] server file`  
 Upload a package, optionally installing it
-* aem_pkg_replicate `server package`  
+* `aem_pkg_replicate server package`  
 Replicate a package from an author server to replication agents
-* aem_pkg_download `[-o file] server package`  
+* `aem_pkg_download [-o file] server package`  
 Download a package
-* aem_pkg_contents `server package`  
+* `aem_pkg_contents server package`  
 List the contents of a package
-* aem_pkg_list `server`  
+* `aem_pkg_list server`  
 List the packages on a server
 
 ## Options
