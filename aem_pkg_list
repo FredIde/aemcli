@@ -1,5 +1,9 @@
 #!/bin/bash
 
+usage_params() {
+	echo "server"
+}
+
 . $(dirname $0)/aem_common
 
 server=$(resolve_server $1)

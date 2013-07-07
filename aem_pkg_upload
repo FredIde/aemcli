@@ -1,12 +1,12 @@
 #!/bin/bash
 
-. $(dirname $0)/aem_common
-
 usage_params() {
 	echo "[-i] server file"
 	echo "output: file to output to, defaults to package_name, - for stdout"
 	echo "package: [package_group:]package_name"
 }
+
+. $(dirname $0)/aem_common
 
 install=false
 if [ "$1" == "-i" ]; then

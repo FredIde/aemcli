@@ -1,12 +1,12 @@
 #!/bin/bash
 
-. $(dirname $0)/aem_common
-
 usage_params() {
 	echo "server package"
 	echo "server: protocol://hostname of server to send to, may be an alias from ~/.aemcli"
 	echo "package: [package_group:]package_name"
 }
+
+. $(dirname $0)/aem_common
 
 output=
 if [ "$1" == "-o" ]; then

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-. $(dirname $0)/aem_common
-
 usage_params() {
 	echo "server package"
 	echo "package: [package_group:]package_name"
 }
+
+. $(dirname $0)/aem_common
 
 server=$(resolve_server $1)
 resolve_package $2

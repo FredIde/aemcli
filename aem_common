@@ -70,3 +70,6 @@ if [ -f $HOME/.aemcli ]; then
 	. $HOME/.aemcli
 fi
 
+if [ "$1" = "-h" -o "$1" = "--help" ]; then
+	usage
+fi
