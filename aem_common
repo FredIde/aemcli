@@ -40,7 +40,7 @@ resolve_package() {
 	[ $remaining ] || usage "package must be specified"
 	
 	package_version=
-	if [[ $remaining =~ :[0-9\.]+$ ]]; then
+	if [[ $remaining =~ :[0-9\.]*$ ]]; then
 			package_version=${remaining/*:}
 			remaining=${remaining%:$package_version}
 	fi
