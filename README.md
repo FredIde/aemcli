@@ -2,15 +2,15 @@
 
 ## Tools
 
-* aem_pkg_upload [-i] autdev01 file
+* aem_pkg_upload `[-i] server file`  
 Upload a package, optionally installing it
-* aem_pkg_replicate autdev01 [com.example.aem:]url-map
+* aem_pkg_replicate `server package`  
 Replicate a package from an author server to replication agents
-* aem_pkg_download [-o file] autdev01 [com.example.aem:]url-map
+* aem_pkg_download `[-o file] server package`  
 Download a package
-* aem_pkg_contents autdev01 [com.example.aem:]url-map
+* aem_pkg_contents `server package`  
 List the contents of a package
-* aem_pkg_list autdev01
+* aem_pkg_list `server`  
 List the packages on a server
 
 ## Options
