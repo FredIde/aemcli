@@ -2,6 +2,7 @@
 
 usage_params() {
 	echo "server"
+	echo "server: protocol://hostname of server to send to, may be an alias from ~/.aemcli"
 }
 
 . $(dirname $0)/aem_common

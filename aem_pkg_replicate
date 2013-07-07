@@ -2,6 +2,7 @@
 
 usage_params() {
 	echo "server package"
+	echo "server: protocol://hostname of server to send to, may be an alias from ~/.aemcli"
 	echo "package: [package_group:]package_name"
 }
 

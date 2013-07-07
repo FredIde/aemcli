@@ -3,6 +3,7 @@
 usage_params() {
 	echo "[-i] server file"
 	echo "output: file to output to, defaults to package_name, - for stdout"
+	echo "server: protocol://hostname of server to send to, may be an alias from ~/.aemcli"
 	echo "package: [package_group:]package_name"
 }
 
