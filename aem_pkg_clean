@@ -1,0 +1,14 @@
+#!/bin/bash
+
+usage_params() {
+	echo "server"
+}
+
+. $(dirname $0)/aem_common
+
+server=$(resolve_server $1)
+
+$(dirname $0)/aem_pkg_list --previous $server | while read package; do
+	echo -n "$package "
+	$(dirname $0)/aem_pkg_delete $server $package
+done

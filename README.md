@@ -10,10 +10,12 @@ Replicate a package from an author server to replication agents
 Download a package
 * `aem_pkg_contents server package`  
 List the contents of a package
-* `aem_pkg_list server`  
-List the packages on a server
+* `aem_pkg_list [-a|--previous] server`  
+List the current packages on a server, can also show all versions, or just previous versions
 * `aem_pkg_delete server package`  
 Delete a package
+* `aem_pkg_clean server`  
+Delete old versions of packages
 
 ## Options
 
