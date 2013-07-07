@@ -18,6 +18,8 @@ Delete a package
 Delete old versions of packages
 * `aem_pkg_transfer [-b] server_from server_to package`  
 Transfer a package from one server to another, optionally building it first
+* `aem_pkg_install server package`  
+Install a package
 
 ## Options
 
@@ -57,7 +59,6 @@ Directly using the CRX API
 * aem_pkg_build autdev01 [com.example.aem:]url-map
 * aem_pkg_preview autdev01 [com.example.aem:]url-map
 * aem_pkg_uninstall autdev01 [com.example.aem:]url-map
-* aem_pkg_install [-d] [-r] autdev01 [com.example.aem:]url-map
 
 Extensions
 

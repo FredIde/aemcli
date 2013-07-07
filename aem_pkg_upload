@@ -18,4 +18,10 @@ server=$(resolve_server $1)
 file=$2
 
 url="$server/crx/packmgr/service/.json/?cmd=upload&force=true"
-call -F "package=@$file;filename=file.zip" -F install=$install $url
+output=$(call -F "package=@$file;filename=file.zip" $url)
+echo $output
+
+package=$(echo $output | sed -ne 's|.*"path":"/etc/packages/\(.*\)/\(.*\)-\(.*\).zip"}|\1:\2:\3|p')
+if [ $package ] && $install; then
+	$(dirname $0)/aem_pkg_install $server $package
+fi
