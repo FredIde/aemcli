@@ -53,12 +53,18 @@ resolve_package() {
 	
 	package_name=$remaining
 	package=$package_group:$package_name:$package_version
-	export package package_group package_name package_version
+	
+	package_jcr=/etc/packages/$package_group/$package_name
+	[ ! $package_version ] || package_jcr=$package_jcr-$package_version
+	package_jcr=$package_jcr.zip
+	
+	export package package_group package_name package_version package_jcr
 	
 	log_debug "package: $package"
 	log_debug "package_group: $package_group"
 	log_debug "package_name: $package_name"
 	log_debug "package_version: $package_version"
+	log_debug "package_jcr: $package_jcr"
 }
 
 call() {

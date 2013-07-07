@@ -18,6 +18,6 @@ fi
 server=$(resolve_server $1)
 resolve_package $2
 
-call -X POST "$server/crx/packmgr/service/.html/etc/packages/$package_group/$package_name.zip?cmd=contents" \
+call -X POST "$server/crx/packmgr/service/.html$package_jcr?cmd=contents" \
 | perl -ne '/.*<span class="-">(?:<b>-<\/b>)?&nbsp;([^<]*)<.*/ && print "$1\n"' \
 | grep -v '/$'

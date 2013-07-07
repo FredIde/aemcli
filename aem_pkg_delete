@@ -2,7 +2,7 @@
 
 usage_params() {
 	echo "server package"
-	echo "package: [package_group:]package_name"
+	echo "package: [package_group:]package_name[:version]"
 }
 
 . $(dirname $0)/aem_common
@@ -10,5 +10,4 @@ usage_params() {
 server=$(resolve_server $1)
 resolve_package $2
 
-url="$server/crx/packmgr/service/.json$package_jcr?cmd=replicate"
-call -X POST $url
+call -X POST "$server/crx/packmgr/service/.json$package_jcr?cmd=delete"

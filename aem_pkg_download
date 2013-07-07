@@ -19,4 +19,4 @@ server=$(resolve_server $1)
 resolve_package $2
 
 [ "$output" ] || output=$package_name.zip
-call $server/etc/packages/$package_group/$package_name.zip > $output
+call $server$package_jcr > $output
