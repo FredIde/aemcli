@@ -22,7 +22,7 @@ url="$server/crx/packmgr/service/.json/?cmd=upload&force=true"
 output=$(call -F "package=@$file;filename=file.zip" $url)
 echo $output
 
-package=$(echo $output | perl -ne '/\/etc\/packages\/(.*)\/(.*?)(?:-([^-]*))?.zip/ && print "$1:$2:$3"')
+package=$(echo $output | perl -ne '/\/etc\/packages\/(.*)\/(.*?)(?:-([0-9\.]+))?.zip/ && print "$1:$2:$3"')
 if [ $package ] && $install; then
 	$(dirname $0)/aem_pkg_install $server $package
 fi
